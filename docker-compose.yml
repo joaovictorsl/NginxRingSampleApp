@@ -1,0 +1,18 @@
+services:
+  app:
+    container_name: sample_app
+    build: ./app
+    networks:
+      - sample_network
+    depends_on:
+      - nginx
+  nginx:
+    container_name: sample_nginx
+    build: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - sample_network
+
+networks:
+  sample_network:
